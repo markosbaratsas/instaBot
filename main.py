@@ -78,13 +78,13 @@ def main_script(browser):
         sleep(2)
         followers = find_followers_or_following(browser, i, "followers")
         print(i, "has", len(followers), "followers.")
-        write_file("followers.json", followers) # for debuging reasons
+        write_file("files/followers.json", followers) # for debuging reasons
 
         browser.get("https://www.instagram.com/"+i)
         sleep(1)
         following = find_followers_or_following(browser, i, "following")
         print(i, "is following", len(following), "people.")
-        write_file("following.json", following) # for debuging reasons
+        write_file("files/following.json", following) # for debuging reasons
 
         ret = you_follow_them_but_they_not_you(followers,following)
         print("You follow them but not them you for user: ", i)
