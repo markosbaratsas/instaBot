@@ -43,7 +43,7 @@ def instagram_cookies_accept(browser):
     sleep(2)
 
 def users_to_look():
-    return read_file("users.json")
+    return read_file("files/users.json")
 
 def check_unfollow_credentials(browser):
     if ("insta_username" in os.environ) or ("insta_password" in os.environ):
@@ -62,7 +62,7 @@ def check_unfollow_credentials(browser):
               export insta_username="your_username"
               export insta_password="your_password"
 
-        AND give ONLY your username on users.json!""")
+        AND give ONLY your username on files/users.json!""")
         browser.quit()
         sys.exit(1)
 
