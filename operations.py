@@ -1,5 +1,6 @@
 import json
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 import sys
 import os
 from time import sleep
@@ -15,8 +16,15 @@ def write_file(file, data):
         json.dump(data, outfile)
 
 def start_browser():
-    browser = webdriver.Chrome(executable_path='/home/markos/Downloads/chromedriver_linux64/chromedriver')
+    CHROMEDRIVER_PATH = '/mnt/c/Users/markg/Downloads/geckodriver-v0.28.0-win64/geckodriver.exe'
+
+    options = Options()
+    options.headless = True
+    browser = webdriver.Firefox(executable_path=CHROMEDRIVER_PATH, options=options)
+
     browser.get("https://www.instagram.com/?hl=el")
+    browser.get_screenshot_as_file("capture.png")
+    sleep(1)
     return browser
 
 def users_to_look():

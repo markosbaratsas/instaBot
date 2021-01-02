@@ -8,9 +8,11 @@ def find_followers_or_following(browser, username,ers_or_ing):
     if(ers_or_ing == "followers"):
         count = int(browser.execute_script("return document.getElementsByClassName('-nal3')[1].getElementsByClassName('g47SY')[0].textContent").replace(",",""))
         print("Number of followers:", count)
+         # because I am following him as well
+        count = count - 1
     else:
         count = int(browser.execute_script("return document.getElementsByClassName('-nal3')[2].getElementsByClassName('g47SY')[0].textContent").replace(",",""))
-        print("Number of following:", count)
+        print("Number of following:", count)   
 
     button = browser.find_element_by_css_selector("[href='/" + username + "/" + ers_or_ing + "/']")
     button.click()
