@@ -11,7 +11,7 @@ This Python script does the following:
 * It repeats the same for the rest of the users in the `information.json` file
 
 ## What can be done using this repository
-1. Find the people that you follow, but they are not following you back. This can, also, be used to find the corresponding people for some other account, as long as YOUR account has access to view their followers and following.
+1. Find the people that you follow, but they are not following you back. This can, also, be used to find the corresponding people for some other account, as long as your account has access to view their followers and following.
 2. Find the people that you follow, but they are not following you back PLUS unfollow a number of those people.
 
 
@@ -33,8 +33,8 @@ export insta_username="your_username"
 export insta_password="your_password"
 ```
 5. Fill in the necessary information required at the `information.json` file. Inside the json file, on the `driver` option, provide one of the following: 
-* Firefox
-* Chrome
+    * Firefox
+    * Chrome
 6. Now, you can execute the script. To find those people execute:
 ```
 python3 main.py
