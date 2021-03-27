@@ -8,5 +8,7 @@ __pycache__/
 geckodriver.log
 
 files/*
+!files/followers.json
+!files/following.json
 
 venv
