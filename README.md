@@ -5,7 +5,7 @@ On Instagram, you follow some people (following).  Some people follow you (follo
 
 ## How it works
 This Python script does the following:
-* Using [Selenium](https://www.google.com/search?q=selenium&oq=selenium&aqs=chrome..69i57.1488j0j1&sourceid=chrome&ie=UTF-8), the script logs in with your Instagram account username and password.
+* Using [Selenium](https://www.google.com/search?q=selenium&oq=selenium&aqs=chrome..69i57.1488j0j1&sourceid=chrome&ie=UTF-8), the script will login to your Instagram account, using your username and password.
 * Then, it goes to a specific user (it goes to each one of the user's profiles provided in the *information.json* file) and it tracks the names of all the followers and following of this user.
 * It compares the 2 different lists, and prints the people you follow, and they are not following you back.
 * It repeats the same for the rest of the users in the *information.json* file
