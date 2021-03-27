@@ -1,4 +1,4 @@
-# Instagram: Find who does NOT follow you
+# Instagram: Find who does NOT follow you back
 
 ## Description
 On Instagram, you follow some people (following).  Some people follow you (followers).  But, there are some people you follow, and they are not following you back. This repository was created to automate the process of finding those people. Instead of trusting third-party apps and providing them with your instagram password, this repository can be used to automate the whole procedure, without having to share your passwords with any app!
