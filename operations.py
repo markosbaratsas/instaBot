@@ -15,12 +15,17 @@ def write_file(file, data):
         json.dump(data, outfile)
 
 def start_browser():
-    browser = webdriver.Chrome(executable_path='/home/markos/Downloads/chromedriver_linux64/chromedriver')
+    data = read_file("information.json")
+    if data["driver"] == "Firefox":
+        browser = webdriver.Firefox(executable_path=data["path_to_driver"])
+    elif data["driver"] == "Chrome":
+        browser = webdriver.Chrome(executable_path=data["path_to_driver"])
+
     browser.get("https://www.instagram.com/?hl=el")
     return browser
 
 def users_to_look():
-    return read_file("files/users.json")
+    return read_file("information.json")["users"]
 
 def check_unfollow_credentials(browser):
     if ("insta_username" not in os.environ) or ("insta_password" not in os.environ):
@@ -38,7 +43,7 @@ def check_unfollow_credentials(browser):
               export insta_username="your_username"
               export insta_password="your_password"
 
-        AND give ONLY your username on files/users.json!""")
+        AND fill the necessary information on the `information.json` file!""")
         browser.quit()
         sys.exit(1)
 

@@ -46,7 +46,7 @@ def you_follow_them_but_they_not_you(browser):
         write_file("files/"+ i +"_following.json", following) # for debuging reasons
 
         ret = you_follow_them_but_they_not_you_check(followers,following)
-        write_file("files/"+ i +"_you_follow_them_but_they_not_you.json", following) # for debuging reasons
+        write_file("files/"+ i +"_you_follow_them_but_they_not_you.json", ret) # for debuging reasons
         print("You follow them but not them you for user: ", i)
         print(ret)
 

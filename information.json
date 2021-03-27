@@ -1,0 +1,8 @@
+{
+    "users": [
+        "instagram_username1",
+        "optional_instagram_username2,3,etc"
+    ],
+    "path_to_driver": "YOUR_PATH_TO_DRIVER",
+    "driver": "Firefox"
+}
