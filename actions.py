@@ -6,13 +6,13 @@ from random import random, seed
 
 def find_followers_or_following(browser, username,ers_or_ing):
     if(ers_or_ing == "followers"):
-        count = int(browser.execute_script("return document.getElementsByClassName('-nal3')[1].getElementsByClassName('g47SY')[0].textContent").replace(",",""))
+        count = int(browser.execute_script("return document.getElementsByClassName('_a6hd')[1].childNodes[0].title").replace(",","").replace(".",""))
         print("Number of followers:", count)
     else:
-        count = int(browser.execute_script("return document.getElementsByClassName('-nal3')[2].getElementsByClassName('g47SY')[0].textContent").replace(",",""))
+        count = int(browser.execute_script("return document.getElementsByClassName('_a6hd')[2].childNodes[1].childNodes[0].innerHTML").replace(",","").replace(".",""))
         print("Number of following:", count)
 
-    button = browser.find_element_by_css_selector("[href='/" + username + "/" + ers_or_ing + "/']")
+    button = browser.find_element_by_xpath('//a[@href="'+'/' + username + '/' + ers_or_ing + '/'+'"]')
     button.click()
 
     if count > 0:
@@ -20,33 +20,35 @@ def find_followers_or_following(browser, username,ers_or_ing):
         currentLen = 1
         sleep(2)
         printing_help = 0
+        current_time = localtime()
+        finding_element_with_list = 'document.getElementsByClassName("xyi19xy")[0].childNodes[0].childNodes[0].childNodes'
         while currentLen < count:
             previousLen = currentLen
-            browser.execute_script("document.getElementsByClassName('_0imsa')["+str(int(currentLen-1))+"].scrollIntoView();")
+            browser.execute_script(f"{finding_element_with_list}[{str(int(currentLen-1))}].scrollIntoView();")
             sleep(0.5)
-            currentLen = browser.execute_script("return document.getElementsByClassName('_0imsa').length")
+            currentLen = browser.execute_script(f"return {finding_element_with_list}.length")
 
             if floor(currentLen/50)>printing_help and previousLen != currentLen:
                 printing_help = floor(currentLen/50)
                 current_time = localtime()
-                print("I have seen", currentLen, "/", count, "sofar. Time:   ",  localtime().tm_hour, ":", localtime().tm_min, ":", localtime().tm_sec)
+                print("I have seen", currentLen, "/", count, "sofar.\tTime:",  localtime().tm_hour, ":", localtime().tm_min, ":", localtime().tm_sec)
             if previousLen == currentLen and localtime().tm_min > current_time.tm_min:
-                browser.execute_script("document.getElementsByClassName('_0imsa')["+str(max(int(currentLen-12), 0))+"].scrollIntoView();")
+                browser.execute_script(f"{finding_element_with_list}[{str(max(int(currentLen-12), 0))}].scrollIntoView();")
+                print(currentLen)
                 sleep(3)
             if previousLen == currentLen and localtime().tm_min > current_time.tm_min and currentLen >= count-5:
                 break
 
         print("end")
         users = browser.execute_script(
-        """
-            let users = document.getElementsByClassName("_0imsa")
+        f"""
+            let users = {finding_element_with_list}
             let arr = [];
-            for (i = 0; i < users.length; i++) {
-                arr.push(users[i].title);
-            }
+            for (i = 0; i < users.length; i++) {{
+                arr.push(users[i].childNodes[0].childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0].innerText);
+            }}
             return arr;
         """)
-
         return users
     else:
         return []

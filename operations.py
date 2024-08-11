@@ -47,8 +47,9 @@ def check_unfollow_credentials(browser):
         browser.quit()
         sys.exit(1)
 
-def instagram_cookies_accept(browser):
+def instagram_cookies_accept(browser: webdriver.Firefox):
     # accept coockies
-    accept = browser.find_element_by_class_name("bIiDR")
+    sleep(2)
+    accept = browser.find_element_by_class_name("_a9_0")
     accept.click()
     sleep(2)
